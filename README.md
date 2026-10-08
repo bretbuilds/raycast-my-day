@@ -2,6 +2,10 @@
 
 A Raycast extension for macOS that puts one day in one keyboard-first place: your calendar agenda, your Apple Reminders, and saved work checklists kept as plain Markdown files you own. It works on **Raycast Free**, needs no account, and everything stays on your Mac.
 
+![My Day in Raycast: the day's calendar, reminders and tasks; completing a reminder, adding a task by typing, and picking tasks for the day](media/demo.gif)
+
+<sub>Demo with made-up data.</sub>
+
 - **My Day:** today's events, due and overdue reminders, the day's main task and supporting tasks, tomorrow, and what's coming up. Complete, push to tomorrow, schedule a work block into a free gap, all from the keyboard.
 - **Checklists:** nested checkbox lists with long notes and links, stored as Markdown (Obsidian-friendly). Pin, archive, duplicate, trash, back up and restore.
 - **My Day Setup:** permission status, calendar and reminder list inventory, a self-test, and an export of undated reminders to Markdown.
