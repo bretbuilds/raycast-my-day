@@ -1,0 +1,192 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "my-day",
+  "title": "My Day",
+  "description": "Today's calendar agenda, your Apple Reminders and Markdown work checklists in one keyboard-first place. Local only, works on Raycast Free.",
+  "icon": "extension-icon.png",
+  "author": "bret",
+  "license": "MIT",
+  "private": true,
+  "platforms": [
+    "macOS"
+  ],
+  "categories": [
+    "Productivity"
+  ],
+  "commands": [
+    {
+      "name": "my-day",
+      "title": "My Day",
+      "description": "Your day: what has to happen, the main task, supporting tasks and tomorrow. Pick tasks from checklists and undated reminders, complete, push to tomorrow. Give this command your hotkey or alias.",
+      "mode": "view"
+    },
+    {
+      "name": "checklists",
+      "title": "Checklists",
+      "description": "Saved work checklists: nested checkbox items with notes, stored as Markdown files you control.",
+      "mode": "view"
+    },
+    {
+      "name": "my-day-setup",
+      "title": "My Day Setup",
+      "description": "Check Calendar and Reminders access, choose the checklist folder, and see how to assign a hotkey.",
+      "mode": "view"
+    }
+  ],
+  "preferences": [
+    {
+      "name": "checklistFolder",
+      "title": "Checklist folder",
+      "description": "Where checklist Markdown files live. Leave empty for ~/Library/Application Support/My Day/Checklists. You may point it inside an Obsidian vault; My Day never reads other notes there, only .md files in this folder.",
+      "type": "directory",
+      "required": false
+    },
+    {
+      "name": "editorApp",
+      "title": "Editor for Open in Editor",
+      "description": "App used by Open in Editor (⌘⇧O). Leave empty to use the default app for .md files.",
+      "type": "appPicker",
+      "required": false
+    },
+    {
+      "name": "timeFormat",
+      "title": "Time format",
+      "description": "How times are shown and offered in pickers. System follows System Settings → General → Date & Time.",
+      "type": "dropdown",
+      "required": false,
+      "default": "system",
+      "data": [
+        {
+          "title": "System setting",
+          "value": "system"
+        },
+        {
+          "title": "12-hour (2:30 PM)",
+          "value": "12h"
+        },
+        {
+          "title": "24-hour (14:30)",
+          "value": "24h"
+        }
+      ]
+    },
+    {
+      "name": "dayStart",
+      "title": "Working day starts",
+      "description": "Free time is offered from this hour.",
+      "type": "dropdown",
+      "required": false,
+      "default": "9",
+      "data": [
+        {
+          "title": "5:00 AM",
+          "value": "5"
+        },
+        {
+          "title": "6:00 AM",
+          "value": "6"
+        },
+        {
+          "title": "7:00 AM",
+          "value": "7"
+        },
+        {
+          "title": "8:00 AM",
+          "value": "8"
+        },
+        {
+          "title": "9:00 AM",
+          "value": "9"
+        },
+        {
+          "title": "10:00 AM",
+          "value": "10"
+        },
+        {
+          "title": "11:00 AM",
+          "value": "11"
+        },
+        {
+          "title": "12:00 PM",
+          "value": "12"
+        }
+      ]
+    },
+    {
+      "name": "dayEnd",
+      "title": "Working day ends",
+      "description": "Free time is offered until this hour.",
+      "type": "dropdown",
+      "required": false,
+      "default": "18",
+      "data": [
+        {
+          "title": "1:00 PM",
+          "value": "13"
+        },
+        {
+          "title": "2:00 PM",
+          "value": "14"
+        },
+        {
+          "title": "3:00 PM",
+          "value": "15"
+        },
+        {
+          "title": "4:00 PM",
+          "value": "16"
+        },
+        {
+          "title": "5:00 PM",
+          "value": "17"
+        },
+        {
+          "title": "6:00 PM",
+          "value": "18"
+        },
+        {
+          "title": "7:00 PM",
+          "value": "19"
+        },
+        {
+          "title": "8:00 PM",
+          "value": "20"
+        },
+        {
+          "title": "9:00 PM",
+          "value": "21"
+        },
+        {
+          "title": "10:00 PM",
+          "value": "22"
+        },
+        {
+          "title": "11:00 PM",
+          "value": "23"
+        }
+      ]
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^2.6.2",
+    "@raycast/utils": "^2.3.2"
+  },
+  "devDependencies": {
+    "@raycast/eslint-config": "^2.2.0",
+    "@types/node": "22.19.17",
+    "@types/react": "19.0.10",
+    "eslint": "^9.0.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.8.0"
+  },
+  "scripts": {
+    "build:helper": "mkdir -p assets && swiftc -O -swift-version 5 -target arm64-apple-macos14 helper/*.swift -o assets/myday-helper && (cd helper && shasum -a 256 *.swift > SOURCES.sha256)",
+    "build": "npm run build:helper && ray build",
+    "dev": "npm run build:helper && ray develop",
+    "lint": "eslint src test && prettier --check src test",
+    "fix-lint": "eslint src test --fix && prettier --write src test",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test 'test/**/*.test.ts'",
+    "lint:store": "ray lint"
+  }
+}

@@ -1,0 +1,26 @@
+# Dependencies and build output
+node_modules/
+dist/
+build/
+*.tsbuildinfo
+raycast-env.d.ts
+
+# The native helper is compiled on your own Mac by `npm run build:helper`; never commit the binary
+assets/myday-helper
+*.o
+*.dSYM/
+
+# Logs
+*.log
+npm-debug.log*
+
+# macOS and editors
+.DS_Store
+._*
+.vscode/
+.idea/
+*.swp
+
+# Secrets (none are needed)
+.env
+.env.*
